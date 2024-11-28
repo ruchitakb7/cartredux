@@ -1,0 +1,10 @@
+   
+.cart{
+    width: 400px;
+    height: fit-content;
+    background-color: grey;
+    color: white;
+    margin-top: 200px;
+   margin-left: 500px;
+   padding: 20px;
+}
