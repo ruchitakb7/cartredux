@@ -1,9 +1,5 @@
 import React from "react"
-import Cart from "./components/cart/cart";
-import Header from "./components/layout/Header";
-import {Routes, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
-
+import Home from "./components/cart/Home";
 
 function App() {
   
@@ -11,7 +7,7 @@ function App() {
   return (
     <>
  
-  <Cart></Cart>
+  <Home></Home>
     </> 
   );
 }

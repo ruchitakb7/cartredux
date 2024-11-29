@@ -12,6 +12,7 @@ const Header=()=>{
 
    const showCart=useSelector((state)=>state.cart.showCart)
    const Cart=useSelector((state)=>state.cart.cart)
+   const totalQuantity=useSelector((state)=>state.cart.totalQuantity)
   console.log(showCart)
 
     return(<Fragment>
@@ -23,7 +24,7 @@ const Header=()=>{
                 <Navbar className="d-flex align-items-center justify-content-between " >
                   <Nav.Link  as={Link} to="/cart">
                      <Button variant="outline-info" onClick={()=>dispatch(toggleCart())} size="sm">CartItems 
-                      <span style={{marginLeft:"10px"}}>{Cart.length}</span>  </Button>
+                      <span style={{marginLeft:"10px"}}>{totalQuantity}</span>  </Button>
                     
                   </Nav.Link>
                  

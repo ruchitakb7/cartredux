@@ -1,49 +1,44 @@
 import React,{Fragment} from "react"
-import { Container,Button,Row,Col } from "react-bootstrap"
-import Header from "../layout/Header"
+import { Button,Row,Col } from "react-bootstrap"
 import './cart.css'
-import { useSelector } from "react-redux"
+import { useSelector,useDispatch } from "react-redux"
+import { addItem,removeItem} from "../../store/cartReducer"
 
 const Cart=()=>{
 
   const showCart=useSelector((state)=>state.cart.showCart)
-  console.log(showCart)
-
+  const cart=useSelector((state)=>state.cart.cart)
+  const dispatch=useDispatch()
+  console.log(cart)
+ 
     return(
        <Fragment>
-        <Header></Header>
-        <div className="main">
         {showCart && (
                      <div className="cart">
-                     <h5>Your Shopping Cart</h5>
-                        <Row className="mb-3">
-                         <Col md={8}> Test Item</Col>
-                         <Col>$ 18</Col>
-                        </Row>
-                        <Row>
-                         <Col  md={8}> + 3</Col>
-                         <Col>
-                            <Button size="sm" style={{backgroundColor:"grey"}} >+</Button>
-                            <Button style={{marginLeft:'10px',backgroundColor:"grey"}} size="sm">-</Button>
-                        </Col>
-                        </Row>
-                        
+                        {cart.length>0?(
+                              <h5>Your Shopping Cart</h5>
+                        ):(
+                            <h5>Your Shopping Cart Is Empty</h5>
+                        )}
+                         
+                        {cart.length>0 && cart.map((cart)=>(
+                                <>
+                                <Row id={cart.id} className="mb-3 mt-3">
+                                 <Col md={8}>{cart.title}</Col>
+                                 <Col>${cart.price}</Col>
+                                </Row>
+                                <Row>
+                                 <Col  md={8}>+{cart.quantity}</Col>
+                                 <Col>
+                                    <Button onClick={()=>dispatch(addItem(cart))} size="sm" style={{backgroundColor:"grey"}} >+</Button>
+                                    <Button onClick={()=> dispatch(removeItem(cart.id))} style={{marginLeft:'10px',backgroundColor:"grey"}} size="sm">-</Button>
+                                </Col>
+                                </Row>
+                                </>
+
+                             ))}
                    </div>
         )}
-        <center><h5>Buy Your Favourite Product</h5></center>
-        <center><div className="product">
-            <Row className="ml-2 mt-3 mb-2 text-align-left">
-                <Col md={4} style={{marginLeft:'20px'}}>Test</Col>
-                <Col md={2} style={{marginLeft:'190px',fontWeight:'bold'}}>$6.00</Col>
-            </Row>
-            <Row className="mb-1">
-                <Col  md={{ span: 4, offset: 1 }} >First Product</Col>
-            </Row>
-                <Button variant="dark" size="sm" className="d-flex justify-content-rightt">Add To Cart</Button>
-
-        </div>
-        </center>
-              </div>
        </Fragment>
     )}
 
