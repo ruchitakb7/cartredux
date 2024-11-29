@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState={
-    Isvisible:false,
+    showCart:false,
     cart:[]
 }
 
@@ -11,7 +11,7 @@ const cartSlice=createSlice({
     reducers:{
         toggleCart(state){
            
-          state.Isvisible=!state.Isvisible
+          state.showCart=!state.showCart
         }
 
     }
