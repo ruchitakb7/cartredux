@@ -26,15 +26,11 @@ const Header=()=>{
                      <Button variant="outline-info" onClick={()=>dispatch(toggleCart())} size="sm">CartItems 
                       <span style={{marginLeft:"10px"}}>{totalQuantity}</span>  </Button>
                     
-                  </Nav.Link>
-                 
+                  </Nav.Link>   
                 </Navbar>
              </Container>
             </Container>
         </div>
-        
-       
-        
     </Fragment>)
 }
 

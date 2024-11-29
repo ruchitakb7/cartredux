@@ -35,6 +35,7 @@ const cartSlice=createSlice({
         removeItem(state,action){
             const index = state.cart.findIndex(cart => cart.id === action.payload.id);
             const cartitem=state.cart[index]
+            console.log(JSON.stringify(cartitem))
             if(cartitem.quantity>1)
             {
                 cartitem.quantity=cartitem.quantity-1

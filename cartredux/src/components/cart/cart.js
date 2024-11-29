@@ -31,7 +31,7 @@ const Cart=()=>{
                                  <Col  md={8}>+{cart.quantity}</Col>
                                  <Col>
                                     <Button onClick={()=>dispatch(addItem(cart))} size="sm" style={{backgroundColor:"grey"}} >+</Button>
-                                    <Button onClick={()=> dispatch(removeItem(cart.id))} style={{marginLeft:'10px',backgroundColor:"grey"}} size="sm">-</Button>
+                                    <Button onClick={()=> dispatch(removeItem(cart))} style={{marginLeft:'10px',backgroundColor:"grey"}} size="sm">-</Button>
                                 </Col>
                                 </Row>
                                 </>
