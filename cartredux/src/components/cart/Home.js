@@ -1,10 +1,12 @@
-import React,{Fragment} from "react"
+import React,{Fragment,useEffect} from "react"
 import {Button,Row,Col } from "react-bootstrap"
 import Header from "../layout/Header"
 import './cart.css'
 import { useSelector,useDispatch} from "react-redux"
 import { addItem } from "../../store/cartReducer"
 import Cart from "./cart"
+import Notification from "../../UI/Notification"
+import { fetchCartData,sendCartData,sendR } from "../../store/cart-action"
 
 const Product=[
     {id:1,title:'Bag',Desc:'Durable',price:500},
@@ -16,11 +18,25 @@ const Product=[
 const Home=()=>{
 
   const showCart=useSelector((state)=>state.cart.showCart)
+  const notification=useSelector((state)=>state.ui.notification)
   const dispatch=useDispatch()
+
+  
+
+  useEffect(() => {
+    dispatch(fetchCartData());
+  }, [dispatch]);
   
 
     return(
        <Fragment>
+         {notification && (
+        <Notification
+          status={notification.status}
+          title={notification.title}
+          message={notification.message}
+        />
+      )}
         <Header></Header>
         <div className="main">
         {showCart && (
@@ -37,7 +53,7 @@ const Home=()=>{
                 <Row className="mb-1">
                 <Col  md={5} >{product.Desc}</Col>
                 <Col  md={4}  style={{marginLeft:'120px'}}>
-                <Button variant="dark" size="sm"  onClick={()=>dispatch(addItem(product))}>Add To Cart</Button>
+                <Button variant="dark" size="sm"  onClick={()=>dispatch(sendCartData(product))}>Add To Cart</Button>
                 </Col>
                 </Row>
                 </>
