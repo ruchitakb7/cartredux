@@ -15,8 +15,9 @@ const cartSlice=createSlice({
           state.showCart=!state.showCart
         },
         replaceCart(state, action) {
-            state.totalQuantity = action.payload.totalQuantity;
-            state.cart = action.payload.items;
+          
+          //  state.totalQuantity = action.payload.totalQuantity;
+            state.cart = action.payload.cart
             console.log(state.cart)
         },
 

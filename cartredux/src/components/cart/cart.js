@@ -1,8 +1,9 @@
-import React,{Fragment} from "react"
+import React,{Fragment, useEffect} from "react"
 import { Button,Row,Col } from "react-bootstrap"
 import './cart.css'
 import { useSelector,useDispatch } from "react-redux"
 import { addItem,removeItem} from "../../store/cartReducer"
+import { fetchCartData } from "../../store/cart-action"
 
 const Cart=()=>{
 
@@ -10,7 +11,7 @@ const Cart=()=>{
   const cart=useSelector((state)=>state.cart.cart)
   const dispatch=useDispatch()
   console.log(cart)
- 
+  
     return(
        <Fragment>
         {showCart && (

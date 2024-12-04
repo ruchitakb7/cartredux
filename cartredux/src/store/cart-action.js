@@ -14,13 +14,14 @@ export const fetchCartData = () => {
         throw new Error("Could not fetch cart data!");
       }
       const resData = await res.json();
+      console.log(resData)
       return resData;
     };
     try {
       const cartData = await fetchData();
       dispatch(replaceCart({
-        items: cartData.items || [],
-        totalQuantity: cartData.totalQuantity
+        cart: cartData.cart || [],
+      //  totalQuantity: cartData.totalQuantity
       }))
     } catch (error) {
       dispatch(
@@ -52,7 +53,6 @@ export const sendCartData = (cart) => {
           method: "PUT",
           body: JSON.stringify({
             cart: cart,
-            totalQuantity: cart.totalQuantity
           }),
         }
       );

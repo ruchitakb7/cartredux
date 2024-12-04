@@ -18,7 +18,8 @@ const Product=[
 const Home=()=>{
 
   const showCart=useSelector((state)=>state.cart.showCart)
-  const notification=useSelector((state)=>state.ui.notification)
+  const notification = useSelector(state => state.notification || {});
+
   const dispatch=useDispatch()
 
   
